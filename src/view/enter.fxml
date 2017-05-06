@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EnterController">
+    <children>
+        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="179.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../resources/images/user.png" />
+            </image>
+        </ImageView>
+        <TextField fx:id="loginField" layoutX="47.0" layoutY="118.0" prefHeight="25.0" prefWidth="328.0" promptText="Логин" />
+        <Button fx:id="enterButton" layoutX="47.0" layoutY="222.0" mnemonicParsing="false" onAction="#enterAction" prefHeight="25.0" prefWidth="64.0" text="Войти" />
+        <Hyperlink fx:id="forgottenPasswordHyperlink" layoutX="254.0" layoutY="223.0" onAction="#forgottenPasswordAction" text="Забыли пароль?" />
+        <Hyperlink fx:id="registrationHyperLink" layoutX="142.0" layoutY="223.0" onAction="#registrationAction" text="Регистрация" />
+      <PasswordField fx:id="passwordField" layoutX="47.0" layoutY="169.0" prefHeight="25.0" prefWidth="328.0" promptText="Пароль" />
+    </children>
+</AnchorPane>

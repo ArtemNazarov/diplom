@@ -1,0 +1,9 @@
+CREATE TRIGGER updatePackage
+ON Packages
+AFTER UPDATE
+AS
+IF EXISTS (SELECT * FROM inserted WHERE weight < 5)
+BEGIN
+	PRINT 'Error'
+	ROLLBACK TRAN
+END

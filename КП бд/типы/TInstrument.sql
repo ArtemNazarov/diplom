@@ -1,0 +1,2 @@
+CREATE TYPE TInstrument
+FROM char(50) NOT NULL;

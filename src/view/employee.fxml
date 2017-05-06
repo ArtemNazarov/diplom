@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="1510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EmployeeController">
+   <children>
+      <MenuBar layoutX="2.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Файл">
+            <items>
+               <MenuItem fx:id="exitSystemItem" mnemonicParsing="false" onAction="#exitSystem" text="Выйти из системы" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Правка">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#changePassword" text="Изменить пароль" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="О программе">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane layoutX="2.0" layoutY="40.0" prefHeight="537.0" prefWidth="1215.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="13.0">
+        <tabs>
+            <Tab text="Заказы">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="459.0" prefWidth="1115.0">
+                     <children>
+                        <HBox layoutX="36.0" layoutY="57.0" prefHeight="391.0" prefWidth="1144.0">
+                           <children>
+                              <HBox prefHeight="395.0" prefWidth="292.0">
+                                 <children>
+                                    <VBox prefHeight="206.0" prefWidth="143.0" spacing="20.0">
+                                       <children>
+                                          <Label text="id" />
+                                          <Label prefHeight="15.0" prefWidth="129.0" text="Название игрушки" />
+                                          <Label text="Стоимость" />
+                                          <Label text="Валюта" />
+                                          <Label text="Количество" />
+                                          <Label text="Состояние заказа" />
+                                          <Label text="Дата выполнения" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="1.0" left="10.0" right="1.0" top="8.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="391.0" prefWidth="119.0" spacing="10.0">
+                                       <children>
+                                          <TextField fx:id="idOrderField" prefHeight="25.0" prefWidth="132.0" />
+                                          <TextField fx:id="toyTitleOrderField" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField fx:id="toyCostOrderField" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField fx:id="currencyOrderField" />
+                                          <TextField fx:id="amountOrderField" />
+                                          <TextField fx:id="orderStateField" />
+                                          <DatePicker fx:id="dateExecField" />
+                                          <Button fx:id="addOrdersButton" mnemonicParsing="false" onAction="#addOrder" prefHeight="25.0" prefWidth="136.0" text="Добавить" />
+                                          <Button fx:id="changeOrdersButton" mnemonicParsing="false" onAction="#changeOrders" prefHeight="25.0" prefWidth="158.0" text="Изменить" />
+                                          <Button fx:id="getOrdersButton" mnemonicParsing="false" onAction="#getOrders" prefHeight="25.0" prefWidth="162.0" text="Обновить" />
+                                          <Button fx:id="deleteOrderButton" mnemonicParsing="false" onAction="#deleteOrder" prefHeight="25.0" prefWidth="139.0" text="Удалить" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="ordersTable" prefHeight="391.0" prefWidth="831.0">
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn fx:id="idOrderCol" prefWidth="75.0" text="id" />
+                                    <TableColumn fx:id="toyTitleOrderCol" prefWidth="75.0" text="Название игрушки" />
+                                    <TableColumn fx:id="toyCostOrderCol" prefWidth="75.0" text="Стоимость" />
+                                    <TableColumn fx:id="currencyOrderCol" prefWidth="75.0" text="Валюта" />
+                                    <TableColumn fx:id="amountOrderCol" prefWidth="75.0" text="Количество" />
+                                    <TableColumn fx:id="orderStateCol" prefWidth="75.0" text="Состояние заказа" />
+                                    <TableColumn fx:id="dateExecutionOrderCol" prefWidth="75.0" text="Дата выполнения" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Договоры">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="36.0" layoutY="57.0" prefHeight="391.0" prefWidth="1144.0">
+                           <children>
+                              <HBox prefHeight="391.0" prefWidth="340.0">
+                                 <children>
+                                    <VBox prefHeight="391.0" prefWidth="189.0" spacing="20.0">
+                                       <children>
+                                          <Label text="id" />
+                                          <Label prefHeight="15.0" prefWidth="149.0" text="Дата выполнения" />
+                                          <Label text="Количество материала" />
+                                          <Label text="Поставщик" />
+                                          <Label text="Материал" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="1.0" left="10.0" right="1.0" top="8.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="391.0" prefWidth="125.0" spacing="10.0">
+                                       <children>
+                                          <TextField fx:id="idProcurementField" prefHeight="25.0" prefWidth="132.0" />
+                                          <TextField fx:id="dateProcurement" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField fx:id="amountProcurement" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField fx:id="supplierField" />
+                                          <TextField fx:id="materialProcField" />
+                                          <Button fx:id="addProcurementButton" mnemonicParsing="false" onAction="#addProcurement" prefHeight="25.0" prefWidth="136.0" text="Добавить" />
+                                          <Button fx:id="changeProcurementsButton" mnemonicParsing="false" onAction="#changeProcurement" prefHeight="25.0" prefWidth="158.0" text="Изменить" />
+                                          <Button fx:id="getProcurementButton" mnemonicParsing="false" onAction="#getProcurements" prefHeight="25.0" prefWidth="162.0" text="Обновить" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="procurementsTable" prefHeight="391.0" prefWidth="824.0">
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn fx:id="idProcurementCol" prefWidth="75.0" text="id" />
+                                    <TableColumn fx:id="dateExecProcurCol" prefWidth="75.0" text="Дата выполнения" />
+                                    <TableColumn fx:id="amountMaterialCol" prefWidth="75.0" text="Количество материала" />
+                                    <TableColumn fx:id="supplierProcurementCol" prefWidth="75.0" text="Поставщик" />
+                                    <TableColumn fx:id="materialProcurementCol" prefWidth="75.0" text="Материал" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Поставщики">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="36.0" layoutY="57.0" prefHeight="391.0" prefWidth="1144.0">
+                           <children>
+                              <HBox prefHeight="391.0" prefWidth="363.0">
+                                 <children>
+                                    <VBox prefHeight="391.0" prefWidth="201.0" spacing="20.0">
+                                       <children>
+                                          <Label text="id" />
+                                          <Label prefHeight="15.0" prefWidth="83.0" text="ОГРН" />
+                                          <Label text="ИНН" />
+                                          <Label text="Название фирмы" />
+                                          <Label text="Срок действия договора" />
+                                          <Label text="Дата подписания договора" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="1.0" left="10.0" right="1.0" top="8.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="391.0" prefWidth="127.0" spacing="10.0">
+                                       <children>
+                                          <TextField fx:id="idSupplierField" prefHeight="25.0" prefWidth="132.0" />
+                                          <TextField fx:id="ogrnSupplierField" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField fx:id="innSupplierField" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField fx:id="firmTitleSupplierField" />
+                                          <TextField fx:id="contractValidityField" />
+                                          <DatePicker fx:id="contractDateField" />
+                                          <Button fx:id="addSuppliersButton" mnemonicParsing="false" onAction="#addSupplier" prefHeight="25.0" prefWidth="136.0" text="Добавить" />
+                                          <Button fx:id="updateSuppliersButton" mnemonicParsing="false" onAction="#updateSuppliers" prefHeight="25.0" prefWidth="158.0" text="Изменить" />
+                                          <Button fx:id="getSuppliersButton" mnemonicParsing="false" onAction="#getSuppliers" prefHeight="25.0" prefWidth="162.0" text="Обновить" />
+                                          <Button fx:id="deleteSupplierButton" mnemonicParsing="false" onAction="#deleteSupplier" prefHeight="25.0" prefWidth="139.0" text="Удалить" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="suppliersTable" prefHeight="391.0" prefWidth="821.0">
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn fx:id="idSupplierCol" prefWidth="75.0" text="id" />
+                                    <TableColumn fx:id="ogrnSupplierCol" prefWidth="75.0" text="ОГРН" />
+                                    <TableColumn fx:id="innSupplierCol" prefWidth="75.0" text="ИНН" />
+                                    <TableColumn fx:id="firmTitleFieldSupplierCol" prefWidth="75.0" text="Название фирмы" />
+                                    <TableColumn fx:id="contractValidityCol" prefWidth="75.0" text="Срок действия контракта" />
+                                    <TableColumn fx:id="contractDateCol" editable="false" prefWidth="75.0" text="Дата подписания" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Оборудование">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="36.0" layoutY="57.0" prefHeight="391.0" prefWidth="1144.0">
+                           <children>
+                              <HBox prefHeight="391.0" prefWidth="363.0">
+                                 <children>
+                                    <VBox prefHeight="391.0" prefWidth="201.0" spacing="20.0">
+                                       <children>
+                                          <Label text="id" />
+                                          <Label prefHeight="15.0" prefWidth="83.0" text="Название" />
+                                          <Label text="Дата изготовления" />
+                                          <Label text="Назначение" />
+                                          <Label text="Тип оборудования" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="1.0" left="10.0" right="1.0" top="8.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="391.0" prefWidth="127.0" spacing="10.0">
+                                       <children>
+                                          <TextField fx:id="idEqField" prefHeight="25.0" prefWidth="132.0" />
+                                          <TextField fx:id="eqTitleField" prefHeight="25.0" prefWidth="156.0" />
+                                          <DatePicker fx:id="dateManufactureField" />
+                                          <TextField fx:id="purposeField" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField fx:id="equipmentTypeField" />
+                                          <Button fx:id="updateOrdersButton111" mnemonicParsing="false" onAction="#getEquipment" prefHeight="25.0" prefWidth="162.0" text="Обновить" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="equipmentTable" prefHeight="391.0" prefWidth="821.0">
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn fx:id="idEquipCol" prefWidth="75.0" text="id" />
+                                    <TableColumn fx:id="eqTitleCol" prefWidth="75.0" text="Название" />
+                                    <TableColumn fx:id="manufactureDateCol" prefWidth="75.0" text="Дата изготовления" />
+                                    <TableColumn fx:id="purposeCol" prefWidth="75.0" text="Назначение" />
+                                    <TableColumn fx:id="eqTypeCol" prefWidth="75.0" text="Тип оборудования" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Материалы">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="36.0" layoutY="57.0" prefHeight="391.0" prefWidth="1144.0">
+                           <children>
+                              <HBox prefHeight="391.0" prefWidth="363.0">
+                                 <children>
+                                    <VBox prefHeight="391.0" prefWidth="201.0" spacing="20.0">
+                                       <children>
+                                          <Label text="id" />
+                                          <Label prefHeight="15.0" prefWidth="83.0" text="Название" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="1.0" left="10.0" right="1.0" top="8.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="391.0" prefWidth="127.0" spacing="10.0">
+                                       <children>
+                                          <TextField fx:id="idMaterialField" prefHeight="25.0" prefWidth="132.0" />
+                                          <TextField fx:id="materialTitleField" prefHeight="25.0" prefWidth="156.0" />
+                                          <Button fx:id="getMaterialsButton" mnemonicParsing="false" onAction="#getMaterials" prefHeight="25.0" prefWidth="162.0" text="Обновить" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="materialsTable" prefHeight="391.0" prefWidth="821.0">
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn fx:id="idMaterialCol" prefWidth="166.0" text="id" />
+                                    <TableColumn fx:id="materialCol" prefWidth="633.0" text="Название" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Изготовление игрушек">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="36.0" layoutY="57.0" prefHeight="391.0" prefWidth="1144.0">
+                           <children>
+                              <HBox prefHeight="391.0" prefWidth="363.0">
+                                 <children>
+                                    <VBox prefHeight="391.0" prefWidth="201.0" spacing="20.0">
+                                       <children>
+                                          <Label text="Сотрудник" />
+                                          <Label prefHeight="15.0" prefWidth="83.0" text="Игрушка" />
+                                          <Label text="Оборудование" />
+                                          <Label text="Номер заказа" />
+                                          <Label text="Количество материала" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="1.0" left="10.0" right="1.0" top="8.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="391.0" prefWidth="127.0" spacing="10.0">
+                                       <children>
+                                          <TextField fx:id="employeeProduceField" prefHeight="25.0" prefWidth="132.0" />
+                                          <TextField fx:id="toyProduceField" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField fx:id="equipProduceField" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField fx:id="orderNumberField" />
+                                          <TextField fx:id="materialAmountField" />
+                                          <Button fx:id="addProduceButton" mnemonicParsing="false" onAction="#addProduce" prefHeight="25.0" prefWidth="136.0" text="Добавить" />
+                                          <Button fx:id="changeProduceButton" mnemonicParsing="false" onAction="#changeProduce" prefHeight="25.0" prefWidth="158.0" text="Изменить" />
+                                          <Button fx:id="deleteProduceButton" mnemonicParsing="false" onAction="#deleteProduce" prefHeight="25.0" prefWidth="139.0" text="Удалить" />
+                                          <Button fx:id="getProduceButton" mnemonicParsing="false" onAction="#getProduce" prefHeight="25.0" prefWidth="162.0" text="Обновить" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="produceTable" prefHeight="391.0" prefWidth="821.0">
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="Сотрудник" />
+                                    <TableColumn fx:id="toyProduceCol" prefWidth="75.0" text="Игрушка" />
+                                    <TableColumn fx:id="eqProduceCol" prefWidth="75.0" text="Оборудование" />
+                                    <TableColumn fx:id="orderProduceCol" prefWidth="75.0" text="Номер заказа" />
+                                    <TableColumn fx:id="amountMaterialProduceCol" prefWidth="75.0" text="Количество материала" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Игрушки">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="36.0" layoutY="57.0" prefHeight="391.0" prefWidth="1144.0">
+                           <children>
+                              <HBox prefHeight="391.0" prefWidth="363.0">
+                                 <children>
+                                    <VBox prefHeight="391.0" prefWidth="201.0" spacing="20.0">
+                                       <children>
+                                          <Label text="Сотрудник" />
+                                          <Label prefHeight="15.0" prefWidth="83.0" text="Игрушка" />
+                                          <Label text="Оборудование" />
+                                          <Label text="Назначение" />
+                                          <Label text="Тип оборудования" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="1.0" left="10.0" right="1.0" top="8.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="391.0" prefWidth="127.0" spacing="10.0">
+                                       <children>
+                                          <TextField fx:id="idField12111111" prefHeight="25.0" prefWidth="132.0" />
+                                          <TextField fx:id="seatField12111111" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField fx:id="salaryField12111111" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField />
+                                          <TextField />
+                                          <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Добавить" />
+                                          <Button fx:id="changeOrderButton1111111" mnemonicParsing="false" onAction="#changeOrder" prefHeight="25.0" prefWidth="158.0" text="Изменить" />
+                                          <Button fx:id="updateOrdersButton1111111" mnemonicParsing="false" onAction="#getOrders" prefHeight="25.0" prefWidth="162.0" text="Обновить" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="ordersTable1111111" prefHeight="391.0" prefWidth="821.0">
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="Сотрудник" />
+                                    <TableColumn fx:id="toyTitle1111111" prefWidth="75.0" text="Игрушка" />
+                                    <TableColumn fx:id="toyCost1111111" prefWidth="75.0" text="Оборудование" />
+                                    <TableColumn fx:id="currencyOrder1111111" prefWidth="75.0" text="Номер заказа" />
+                                    <TableColumn fx:id="amountOrder1111111" prefWidth="75.0" text="Количество материала" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

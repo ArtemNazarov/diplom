@@ -1,0 +1,4 @@
+CREATE RULE MinSalary
+AS
+	@X > 7500
+GO

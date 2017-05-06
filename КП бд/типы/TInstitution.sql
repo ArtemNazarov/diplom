@@ -1,0 +1,2 @@
+CREATE TYPE TInstitution
+FROM char(40) NOT NULL;
