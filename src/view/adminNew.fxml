@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="1510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EmployeeController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="898.0" prefWidth="1510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminController">
    <children>
       <MenuBar layoutX="2.0">
         <menus>
           <Menu mnemonicParsing="false" text="Файл">
             <items>
-               <MenuItem fx:id="exitSystemItem" mnemonicParsing="false" onAction="#exitSystem" text="Выйти из системы" />
+              <MenuItem fx:id="exitSystemItem" mnemonicParsing="false" onAction="#exitSystem" text="Выйти из системы" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Правка">
@@ -24,8 +26,166 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TabPane layoutX="2.0" layoutY="40.0" prefHeight="537.0" prefWidth="1215.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="13.0">
+      <TabPane layoutX="2.0" layoutY="40.0" prefHeight="851.0" prefWidth="1477.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="31.0">
         <tabs>
+          <Tab text="Сотрудники">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="786.0" prefWidth="1495.0">
+                     <children>
+                        <TableView fx:id="employeesTable" layoutX="90.0" layoutY="230.0" prefHeight="533.0" prefWidth="1364.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="23.0">
+                          <columns>
+                            <TableColumn fx:id="idEmployee" text="id" />
+                            <TableColumn fx:id="snpEmployee" prefWidth="282.0" text="ФИО" />
+                              <TableColumn fx:id="birthDateEmployee" prefWidth="75.0" text="Дата рождения" />
+                              <TableColumn fx:id="cityEmployee" prefWidth="75.0" text="Город" />
+                              <TableColumn fx:id="addressEmployee" prefWidth="75.0" text="Адрес" />
+                              <TableColumn fx:id="phoneEmployee" prefWidth="75.0" text="Телефон" />
+                              <TableColumn fx:id="seatEmployeeCol" prefWidth="75.0" text="Должность" />
+                              <TableColumn fx:id="institutionEmployeeCol" prefWidth="75.0" text="Учреждение" />
+                              <TableColumn fx:id="departmentEmployeeCol" prefWidth="75.0" text="Отдел" />
+                              <TableColumn fx:id="loginEmployeeCol" prefWidth="75.0" text="Логин" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <GridPane alignment="CENTER" layoutX="20.0" layoutY="42.0" prefHeight="108.0" prefWidth="1432.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="25.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="206.0" minWidth="10.0" prefWidth="73.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="0.0" prefWidth="144.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="325.0" minWidth="0.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="192.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="125.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="238.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="96.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="223.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="72.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="191.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="47.0" valignment="CENTER" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="177.0" minHeight="6.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField fx:id="idEmployeeField" prefHeight="25.0" prefWidth="132.0" GridPane.columnIndex="1" />
+                              <Label text="id:" />
+                              <Label prefHeight="21.0" prefWidth="42.0" text="ФИО:" GridPane.columnIndex="2" />
+                              <TextField fx:id="snpEmployeeField" prefHeight="25.0" prefWidth="156.0" GridPane.columnIndex="3" />
+                              <Label text="Дата рождения:" GridPane.columnIndex="4" />
+                              <DatePicker fx:id="birthDateEmployeeField" prefHeight="31.0" prefWidth="471.0" GridPane.columnIndex="5" />
+                              <Label text="Город:" GridPane.columnIndex="6" />
+                              <TextField fx:id="cityEmployeeField" GridPane.columnIndex="7" />
+                              <Label text="Адрес:" GridPane.columnIndex="8" />
+                              <TextField fx:id="addressEmplField" GridPane.columnIndex="9" />
+                              <Label text="Логин:" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                              <Label prefHeight="21.0" prefWidth="74.0" text="Телефон:" GridPane.rowIndex="1" />
+                              <TextField fx:id="phoneEmployeeField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="Должность:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <TextField fx:id="seatEmployeeField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Label text="Учреждение:" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                              <TextField fx:id="institutionField" prefHeight="31.0" prefWidth="187.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                              <Label text="Отдел:" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                              <TextField fx:id="departmentEmployeeField" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                              <TextField fx:id="loginEmployeeField" editable="false" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <HBox layoutX="90.0" layoutY="172.0" prefHeight="32.0" prefWidth="1198.0" spacing="20.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="189.0">
+                           <children>
+                              <Button fx:id="addEmployeeButton" mnemonicParsing="false" onAction="#addEmployee" prefHeight="25.0" prefWidth="283.0" text="Добавить" />
+                              <Button fx:id="changeEmployeeButton" mnemonicParsing="false" onAction="#changeEmployee" prefHeight="31.0" prefWidth="283.0" text="Изменить" />
+                              <Button fx:id="deleteEmployeeButton" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="31.0" prefWidth="283.0" text="Удалить" />
+                              <Button fx:id="getEmployeesButton" mnemonicParsing="false" onAction="#getEmployees" prefHeight="31.0" prefWidth="282.0" text="Обновить" />
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Должности">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="seatsTable" layoutX="145.0" layoutY="181.0" prefHeight="602.0" prefWidth="1131.0">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <columns>
+                              <TableColumn fx:id="idSeatCol" prefWidth="75.0" text="id" />
+                              <TableColumn fx:id="seatCol" prefWidth="75.0" text="Должность" />
+                              <TableColumn fx:id="salaryCol" prefWidth="75.0" text="Зарплата" />
+                           </columns>
+                        </TableView>
+                        <VBox layoutX="296.0" layoutY="58.0" prefHeight="85.0" prefWidth="886.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="52.0" prefWidth="997.0" spacing="10.0">
+                                 <children>
+                                    <Label text="id" />
+                                    <TextField fx:id="idSeatsField" prefHeight="31.0" prefWidth="73.0" />
+                                    <Label prefHeight="15.0" prefWidth="83.0" text="Должность" />
+                                    <TextField fx:id="seatField" prefHeight="31.0" prefWidth="346.0" />
+                                    <Label text="Зарплата" />
+                                    <TextField fx:id="salaryField" prefHeight="31.0" prefWidth="248.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="29.0" prefWidth="765.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="addSeatsButton" mnemonicParsing="false" onAction="#addSeat" prefHeight="25.0" prefWidth="285.0" text="Добавить" />
+                                    <Button fx:id="changeSeatButton" mnemonicParsing="false" onAction="#changeSeats" prefHeight="25.0" prefWidth="287.0" text="Изменить" />
+                                    <Button fx:id="getSeatsButton" mnemonicParsing="false" onAction="#getSeats" prefHeight="25.0" prefWidth="267.0" text="Обновить" />
+                                    <Button fx:id="deleteSeatButton" mnemonicParsing="false" onAction="#deleteSeat" prefHeight="25.0" prefWidth="287.0" text="Удалить" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Пользователи системы">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="90.0" layoutY="51.0" prefHeight="403.0" prefWidth="1035.0">
+                           <children>
+                              <HBox prefHeight="403.0" prefWidth="323.0">
+                                 <children>
+                                    <VBox prefHeight="403.0" prefWidth="100.0" spacing="20.0">
+                                       <children>
+                                          <Label text="Логин" />
+                                          <Label prefHeight="15.0" prefWidth="83.0" text="Пароль" />
+                                          <Label text="Роль" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="1.0" left="10.0" right="1.0" top="8.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="403.0" prefWidth="164.0" spacing="10.0">
+                                       <children>
+                                          <TextField fx:id="loginField" prefHeight="25.0" prefWidth="132.0" />
+                                          <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="156.0" />
+                                          <TextField fx:id="roleField" prefHeight="25.0" prefWidth="156.0" />
+                                          <Button fx:id="addUserButton" mnemonicParsing="false" onAction="#addUser" prefHeight="25.0" prefWidth="164.0" text="Добавить" />
+                                          <Button fx:id="changeUsersButton" mnemonicParsing="false" onAction="#changeUsers" prefHeight="25.0" prefWidth="182.0" text="Изменить" />
+                                          <Button fx:id="updateUsersButton" mnemonicParsing="false" onAction="#updateUsers" prefHeight="25.0" prefWidth="235.0" text="Обновить" />
+                                          <Button fx:id="deleteUserButton" mnemonicParsing="false" onAction="#deleteUser" prefHeight="25.0" prefWidth="193.0" text="Удалить" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="usersTable" prefHeight="403.0" prefWidth="780.0">
+                                <columns>
+                                  <TableColumn fx:id="loginCol" prefWidth="75.0" text="Логин" />
+                                  <TableColumn fx:id="passwCol" prefWidth="75.0" text="Пароль" />
+                                    <TableColumn fx:id="roleCol" prefWidth="75.0" text="Роль" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
             <Tab text="Заказы">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="459.0" prefWidth="1115.0">
@@ -114,6 +274,7 @@
                                           <Button fx:id="addProcurementButton" mnemonicParsing="false" onAction="#addProcurement" prefHeight="25.0" prefWidth="136.0" text="Добавить" />
                                           <Button fx:id="changeProcurementsButton" mnemonicParsing="false" onAction="#changeProcurement" prefHeight="25.0" prefWidth="158.0" text="Изменить" />
                                           <Button fx:id="getProcurementButton" mnemonicParsing="false" onAction="#getProcurements" prefHeight="25.0" prefWidth="162.0" text="Обновить" />
+                                          <Button fx:id="deleteProcurementButton" mnemonicParsing="false" onAction="#deleteProcurement" prefHeight="25.0" prefWidth="139.0" text="Удалить" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -217,7 +378,10 @@
                                           <DatePicker fx:id="dateManufactureField" />
                                           <TextField fx:id="purposeField" prefHeight="25.0" prefWidth="156.0" />
                                           <TextField fx:id="equipmentTypeField" />
+                                          <Button fx:id="addEquipmentButton" mnemonicParsing="false" onAction="#addEquipment" prefHeight="25.0" prefWidth="136.0" text="Добавить" />
+                                          <Button fx:id="changeEquipment" mnemonicParsing="false" onAction="#changeEquipment" prefHeight="25.0" prefWidth="158.0" text="Изменить" />
                                           <Button fx:id="updateOrdersButton111" mnemonicParsing="false" onAction="#getEquipment" prefHeight="25.0" prefWidth="162.0" text="Обновить" />
+                                          <Button fx:id="deleteEquipButton" mnemonicParsing="false" onAction="#deleteEquip" prefHeight="25.0" prefWidth="139.0" text="Удалить" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -260,7 +424,10 @@
                                        <children>
                                           <TextField fx:id="idMaterialField" prefHeight="25.0" prefWidth="132.0" />
                                           <TextField fx:id="materialTitleField" prefHeight="25.0" prefWidth="156.0" />
+                                          <Button fx:id="addMaterialButton" mnemonicParsing="false" onAction="#addMaterial" prefHeight="25.0" prefWidth="136.0" text="Добавить" />
+                                          <Button fx:id="changeMaterialButton" mnemonicParsing="false" onAction="#changeMaterial" prefHeight="25.0" prefWidth="158.0" text="Изменить" />
                                           <Button fx:id="getMaterialsButton" mnemonicParsing="false" onAction="#getMaterials" prefHeight="25.0" prefWidth="162.0" text="Обновить" />
+                                          <Button fx:id="deleteMaterialButton" mnemonicParsing="false" onAction="#deleteMaterial" prefHeight="25.0" prefWidth="139.0" text="Удалить" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -381,6 +548,11 @@
                         </HBox>
                      </children>
                   </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Покупатели">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
             </Tab>
         </tabs>

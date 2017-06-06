@@ -8,16 +8,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.controlsfx.control.Notifications;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -112,8 +109,6 @@ public class EmployeeController implements Initializable {
     public TableColumn<ToyProduceEntity, Integer> amountMaterialProduceCol;
 
     ObservableList<SeatsEntity> seatsList = FXCollections.observableArrayList();
-    ObservableList<UsersEntity> usersList = FXCollections.observableArrayList();
-    ObservableList<EmployeesEntity> employeesList = FXCollections.observableArrayList();
     ObservableList<ProcurementsEntity> procurementsList = FXCollections.observableArrayList();
     ObservableList<SuppliersEntity> suppliersList = FXCollections.observableArrayList();
     ObservableList<OrdersEntity> ordersList = FXCollections.observableArrayList();
@@ -135,6 +130,8 @@ public class EmployeeController implements Initializable {
         seatsList.clear();
         seatsList.addAll(list);
     }
+
+
 
 
     @Override

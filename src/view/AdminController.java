@@ -153,7 +153,6 @@ public class AdminController implements Initializable {
     SimpleStringProperty roleProperty = new SimpleStringProperty();
 
 
-
     ObservableList<SeatsEntity> seatsList = FXCollections.observableArrayList();
     ObservableList<UsersEntity> usersList = FXCollections.observableArrayList();
     ObservableList<EmployeesEntity> employeesList = FXCollections.observableArrayList();
@@ -179,7 +178,7 @@ public class AdminController implements Initializable {
         seatsList.addAll(list);
     }
 
-    public void initializeSupplierCols(){
+    public void initializeSupplierCols() {
         idSupplierCol.setCellValueFactory(celldata -> celldata.getValue().idProperty().asObject());
         ogrnSupplierCol.setCellValueFactory(celldata -> celldata.getValue().ogrnProperty());
         innSupplierCol.setCellValueFactory(celldata -> celldata.getValue().innProperty());
@@ -194,12 +193,12 @@ public class AdminController implements Initializable {
         suppliersTable.setItems(suppliersList);
     }
 
-    public void initializeEmployeeCols(){
+    public void initializeEmployeeCols() {
         idEmployee.setCellValueFactory(celldata -> celldata.getValue().idProperty().asObject());
         snpEmployee.setCellValueFactory(celldata -> celldata.getValue().snpProperty());
         birthDateEmployee.setCellValueFactory(param -> {
             SimpleStringProperty property = new SimpleStringProperty();
-            property.setValue(param.getValue().getBirthdate().toString());
+            property.setValue(param.getValue().getBirthDate().toString());
             return property;
         });
         cityEmployee.setCellValueFactory(celldata -> celldata.getValue().cityProperty());
@@ -212,7 +211,7 @@ public class AdminController implements Initializable {
         employeesTable.setItems(employeesList);
     }
 
-    public void initializeOrderCols(){
+    public void initializeOrderCols() {
         idOrderCol.setCellValueFactory(celldata -> celldata.getValue().idProperty().asObject());
         toyTitleOrderCol.setCellValueFactory(celldata -> celldata.getValue().toyTitleProperty());
         toyCostOrderCol.setCellValueFactory(celldata -> celldata.getValue().orderCostProperty());
@@ -228,14 +227,14 @@ public class AdminController implements Initializable {
         ordersTable.setItems(ordersList);
     }
 
-    public void initializeSeatCols(){
+    public void initializeSeatCols() {
         idSeatCol.setCellValueFactory(celldata -> celldata.getValue().idProperty().asObject());
         salaryCol.setCellValueFactory(celldata -> celldata.getValue().salaryProperty());
         seatCol.setCellValueFactory(celldata -> celldata.getValue().seatProperty());
         seatsTable.setItems(seatsList);
     }
 
-    public void initializeUserCols(){
+    public void initializeUserCols() {
         loginCol.setCellValueFactory(celldata -> celldata.getValue().userLoginProperty());
         passwCol.setCellValueFactory(celldata -> celldata.getValue().userPasswordProperty());
         roleCol.setCellValueFactory(param -> {
@@ -245,13 +244,13 @@ public class AdminController implements Initializable {
         usersTable.setItems(usersList);
     }
 
-    public void initializeMaterialCols(){
+    public void initializeMaterialCols() {
         idMaterialCol.setCellValueFactory(celldata -> celldata.getValue().idProperty().asObject());
         materialCol.setCellValueFactory(celldata -> celldata.getValue().materialProperty());
         materialsTable.setItems(materialsList);
     }
 
-    public void initializeEquipmentCols(){
+    public void initializeEquipmentCols() {
         idEquipCol.setCellValueFactory(celldata -> celldata.getValue().idProperty().asObject());
         eqTitleCol.setCellValueFactory(celldata -> celldata.getValue().titleProperty());
         manufactureDateCol.setCellValueFactory(param -> {
@@ -265,7 +264,7 @@ public class AdminController implements Initializable {
         equipmentTable.setItems(equipmentList);
     }
 
-    public void initializeProcurementCols(){
+    public void initializeProcurementCols() {
         idProcurementCol.setCellValueFactory(celldata -> celldata.getValue().idProperty().asObject());
         dateExecProcurCol.setCellValueFactory(param -> {
             SimpleStringProperty property = new SimpleStringProperty();
@@ -279,7 +278,7 @@ public class AdminController implements Initializable {
         procurementsTable.setItems(procurementsList);
     }
 
-    public void initializeToyProduceCols(){
+    public void initializeToyProduceCols() {
         toyProduceCol.setCellValueFactory(celldata -> celldata.getValue().toyProperty().asObject());
         eqProduceCol.setCellValueFactory(celldata -> celldata.getValue().equipmentProperty().asObject());
         orderProduceCol.setCellValueFactory(celldata -> celldata.getValue().currentOrderProperty().asObject());
@@ -288,7 +287,7 @@ public class AdminController implements Initializable {
     }
 
 
-    public void initializeSelectionEmployees(){
+    public void initializeSelectionEmployees() {
         employeesTable.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if (employeesTable.getSelectionModel().getSelectedItem() != null) {
                 idEmployeeField.setText(newValue.idProperty().getValue().toString());
@@ -297,8 +296,8 @@ public class AdminController implements Initializable {
                 addressEmplField.setText(newValue.getAddress());
                 phoneEmployeeField.setText(newValue.getPhone());
 //                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//                LocalDate localDate = LocalDate.parse(newValue.getBirthdate().toString(), formatter);
-                birthDateEmployeeField.setValue(newValue.getBirthdate());
+//                LocalDate localDate = LocalDate.parse(newValue.getBirthDate().toString(), formatter);
+                birthDateEmployeeField.setValue(newValue.getBirthDate());
                 seatEmployeeField.setText(newValue.seatProperty().getValue().toString());
                 departmentEmployeeField.setText(newValue.departmentProperty().getValue().toString());
                 institutionField.setText(newValue.institutionProperty().getValue().toString());
@@ -307,7 +306,7 @@ public class AdminController implements Initializable {
         });
     }
 
-    public void initializeSelectionSuppliers(){
+    public void initializeSelectionSuppliers() {
         suppliersTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (suppliersTable.getSelectionModel().getSelectedItem() != null) {
                 idSupplierField.setText(newValue.idProperty().getValue().toString());
@@ -322,9 +321,9 @@ public class AdminController implements Initializable {
         });
     }
 
-    public void initializeSelectionOrders(){
+    public void initializeSelectionOrders() {
         ordersTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (ordersTable.getSelectionModel().getSelectedItem() != null){
+            if (ordersTable.getSelectionModel().getSelectedItem() != null) {
                 idOrderField.setText(newValue.idProperty().getValue().toString());
                 toyTitleOrderField.setText(newValue.toyTitleProperty().getValue());
                 toyCostOrderField.setText(newValue.orderCostProperty().getValue());
@@ -338,9 +337,9 @@ public class AdminController implements Initializable {
         });
     }
 
-    public void initializeSelectionSeats(){
+    public void initializeSelectionSeats() {
         seatsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (seatsTable.getSelectionModel().getSelectedItem() != null){
+            if (seatsTable.getSelectionModel().getSelectedItem() != null) {
                 idSeatsField.setText(newValue.idProperty().getValue().toString());
                 seatField.setText(newValue.seatProperty().getValue());
                 salaryField.setText(newValue.salaryProperty().getValue());
@@ -348,20 +347,19 @@ public class AdminController implements Initializable {
         });
     }
 
-    public void initializeSelectionEquipment(){
+    public void initializeSelectionEquipment() {
         equipmentTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (equipmentTable.getSelectionModel().getSelectedItem() != null){
+            if (equipmentTable.getSelectionModel().getSelectedItem() != null) {
                 idEqField.setText(newValue.idProperty().getValue().toString());
                 eqTitleField.setText(newValue.titleProperty().getValue());
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 LocalDate localDate = LocalDate.parse(newValue.getManufactureDate().toString(), formatter);
                 dateManufactureField.setValue(localDate);
-
             }
         });
     }
 
-    public void initializeSelectionUsers(){
+    public void initializeSelectionUsers() {
         usersTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (usersTable.getSelectionModel().getSelectedItem() != null) {
                 loginField.setText(newValue.userLoginProperty().getValue());
@@ -374,6 +372,11 @@ public class AdminController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        initializeCols();
+        initializeSelections();
+    }
+
+    public void initializeCols() {
         initializeSeatCols();
         initializeUserCols();
         initializeSupplierCols();
@@ -383,7 +386,9 @@ public class AdminController implements Initializable {
         initializeEquipmentCols();
         initializeProcurementCols();
         initializeToyProduceCols();
+    }
 
+    public void initializeSelections() {
         initializeSelectionEmployees();
         initializeSelectionSuppliers();
         initializeSelectionOrders();
@@ -440,14 +445,8 @@ public class AdminController implements Initializable {
     }
 
     public void updateUsers(ActionEvent actionEvent) {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from UsersEntity ");
-        List<UsersEntity> users = query.list();
-        usersList.clear();
-        usersList.addAll(users);
-        tx.commit();
-        session.close();
+        HQLQueryGenerator<UsersEntity> generator = new HQLQueryGenerator<>(UsersEntity.class);
+        generator.generateSelectQuery(usersList);
     }
 
     public void addUser(ActionEvent actionEvent) {
@@ -487,14 +486,8 @@ public class AdminController implements Initializable {
     }
 
     public void getOrders(ActionEvent actionEvent) {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from OrdersEntity ");
-        List<OrdersEntity> orders = query.list();
-        ordersList.clear();
-        ordersList.addAll(orders);
-        tx.commit();
-        session.close();
+        HQLQueryGenerator<OrdersEntity> generator = new HQLQueryGenerator<>(OrdersEntity.class);
+        generator.generateSelectQuery(ordersList);
     }
 
     public void changeOrder(ActionEvent actionEvent) {
@@ -508,14 +501,8 @@ public class AdminController implements Initializable {
     }
 
     public void getProcurements(ActionEvent actionEvent) {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from ProcurementsEntity ");
-        List<ProcurementsEntity> procurements = query.list();
-        procurementsList.clear();
-        procurementsList.addAll(procurements);
-        tx.commit();
-        session.close();
+        HQLQueryGenerator<ProcurementsEntity> generator = new HQLQueryGenerator<>(ProcurementsEntity.class);
+        generator.generateSelectQuery(procurementsList);
     }
 
     public void deleteProcurement(ActionEvent actionEvent) {
@@ -528,14 +515,8 @@ public class AdminController implements Initializable {
     }
 
     public void getSuppliers(ActionEvent actionEvent) {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from SuppliersEntity ");
-        List<SuppliersEntity> suppliers = query.list();
-        suppliersList.clear();
-        suppliersList.addAll(suppliers);
-        tx.commit();
-        session.close();
+        HQLQueryGenerator<SuppliersEntity> generator = new HQLQueryGenerator<>(SuppliersEntity.class);
+        generator.generateSelectQuery(suppliersList);
     }
 
     public void deleteSupplier(ActionEvent actionEvent) {
@@ -548,14 +529,8 @@ public class AdminController implements Initializable {
     }
 
     public void getEquipment(ActionEvent actionEvent) {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from EquipmentEntity ");
-        List<EquipmentEntity> equipment = query.list();
-        equipmentList.clear();
-        equipmentList.addAll(equipment);
-        tx.commit();
-        session.close();
+        HQLQueryGenerator<EquipmentEntity> generator = new HQLQueryGenerator<>(EquipmentEntity.class);
+        generator.generateSelectQuery(equipmentList);
     }
 
     public void deleteEquip(ActionEvent actionEvent) {
@@ -570,18 +545,13 @@ public class AdminController implements Initializable {
     }
 
     public void getMaterials(ActionEvent actionEvent) {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from MaterialsEntity ");
-        List<MaterialsEntity> materials = query.list();
-        materialsList.clear();
-        materialsList.addAll(materials);
-        tx.commit();
-        session.close();
+        HQLQueryGenerator<MaterialsEntity> generator = new HQLQueryGenerator<>(MaterialsEntity.class);
+        generator.generateSelectQuery(materialsList);
     }
 
     public void deleteMaterial(ActionEvent actionEvent) {
-
+        HQLQueryGenerator<MaterialsEntity> generator = new HQLQueryGenerator<>(MaterialsEntity.class);
+        generator.generateDeleteQuery(materialsList, Integer.parseInt(idMaterialField.getText()));
     }
 
     public void addProduce(ActionEvent actionEvent) {
@@ -597,20 +567,14 @@ public class AdminController implements Initializable {
     }
 
     public void getProduce(ActionEvent actionEvent) {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from ToyProduceEntity ");
-        List<ToyProduceEntity> produce = query.list();
-        produceList.clear();
-        produceList.addAll(produce);
-        tx.commit();
-        session.close();
+        HQLQueryGenerator<ToyProduceEntity> generator = new HQLQueryGenerator<>(ToyProduceEntity.class);
+        generator.generateSelectQuery(produceList);
     }
 
     public void addEmployee(ActionEvent actionEvent) {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        Query query = session.createNativeQuery("INSERT INTO employees(snp,birthdate,city,address,phone,seat,department,institution, login) VALUES (\'"+ snpEmployeeField.getText() +"\',\'"+ birthDateEmployeeField.getValue().toString()+"\',\'" + cityEmployeeField.getText() +"\',\'" + addressEmplField.getText()  +"\',\'" + phoneEmployeeField.getText() +"\',\'" + seatEmployeeField.getText() + "\',\'" + departmentEmployeeField.getText() + "\',\'" + institutionField.getText() + "\',\'" + loginField.getText() + "\');");
+        Query query = session.createNativeQuery("INSERT INTO employees(snp,birthdate,city,address,phone,seat,department,institution, login) VALUES (\'" + snpEmployeeField.getText() + "\',\'" + birthDateEmployeeField.getValue().toString() + "\',\'" + cityEmployeeField.getText() + "\',\'" + addressEmplField.getText() + "\',\'" + phoneEmployeeField.getText() + "\',\'" + seatEmployeeField.getText() + "\',\'" + departmentEmployeeField.getText() + "\',\'" + institutionField.getText() + "\',\'" + loginField.getText() + "\');");
         query.executeUpdate();
         tx.commit();
         session.close();
@@ -619,6 +583,7 @@ public class AdminController implements Initializable {
     public void changeEmployee(ActionEvent actionEvent) {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
+        EmployeesEntity.class.getDeclaredFields();
         Query query = session.createQuery("update EmployeesEntity SET snp= :snpParam, city = :city, address = :address, phone = :phone, birthdate= :birthDate, seat = :seat, department = :dep, institution = :inst WHERE id = :id");
         query.setParameter("id", Integer.parseInt(idEmployeeField.getText()));
         query.setParameter("snpParam", snpEmployeeField.getText());
@@ -627,8 +592,8 @@ public class AdminController implements Initializable {
         query.setParameter("address", addressEmplField.getText());
         query.setParameter("phone", phoneEmployeeField.getText());
         query.setParameter("inst", Integer.parseInt(institutionField.getText()));
-        query.setParameter("dep", Integer.parseInt(departmentEmployeeField.getText()) );
-        query.setParameter("seat", Integer.parseInt(seatEmployeeField.getText()) );
+        query.setParameter("dep", Integer.parseInt(departmentEmployeeField.getText()));
+        query.setParameter("seat", Integer.parseInt(seatEmployeeField.getText()));
         query.executeUpdate();
         selectSeats(session);
         tx.commit();
@@ -636,25 +601,21 @@ public class AdminController implements Initializable {
     }
 
     public void getEmployees(ActionEvent actionEvent) {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from EmployeesEntity ");
-        List<EmployeesEntity> employees = query.list();
-        employeesList.clear();
-        employeesList.addAll(employees);
-        tx.commit();
-        session.close();
+        HQLQueryGenerator<EmployeesEntity> generator = new HQLQueryGenerator<>(EmployeesEntity.class);
+        generator.generateSelectQuery(employeesList);
     }
 
     public void deleteEmployee(ActionEvent actionEvent) {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("delete from EmployeesEntity where id = :id");
-        query.setParameter("id",idEmployeeField.getText());
-        query.executeUpdate();
-        selectSeats(session);
-        tx.commit();
-        session.close();
+        HQLQueryGenerator<EmployeesEntity> generator = new HQLQueryGenerator<>(EmployeesEntity.class);
+        generator.generateDeleteQuery(employeesList, Integer.parseInt(idEmployeeField.getText()));
+//        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+//        Transaction tx = session.beginTransaction();
+//        Query query = session.createQuery("delete from EmployeesEntity where id = :id");
+//        query.setParameter("id", idEmployeeField.getText());
+//        query.executeUpdate();
+//        selectSeats(session);
+//        tx.commit();
+//        session.close();
     }
 
     public void exitSystem(ActionEvent actionEvent) {

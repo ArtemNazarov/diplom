@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class EmployeesEntity {
     private SimpleIntegerProperty id= new SimpleIntegerProperty();
     private SimpleStringProperty snp = new SimpleStringProperty();
-    private LocalDate birthdate;
+    private LocalDate birthDate;
     private SimpleStringProperty city= new SimpleStringProperty();
     private SimpleStringProperty address= new SimpleStringProperty();
     private SimpleStringProperty phone= new SimpleStringProperty();
@@ -42,13 +42,13 @@ public class EmployeesEntity {
     }
 
     @Convert (converter = EmployeesEntity.DateConverter.class)
-    @Column(name = "birthdate", nullable = false)
-    public LocalDate getBirthdate() {
-        return birthdate;
+    @Column(name = "birthDate", nullable = false)
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     @Basic
@@ -133,7 +133,7 @@ public class EmployeesEntity {
         if (department != that.department) return false;
         if (institution != that.institution) return false;
         if (snp != null ? !snp.equals(that.snp) : that.snp != null) return false;
-        if (birthdate != null ? !birthdate.equals(that.birthdate) : that.birthdate != null) return false;
+        if (birthDate != null ? !birthDate.equals(that.birthDate) : that.birthDate != null) return false;
         if (city != null ? !city.equals(that.city) : that.city != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
@@ -146,7 +146,7 @@ public class EmployeesEntity {
     public int hashCode() {
         int result = id.get();
         result = 31 * result + (snp != null ? snp.hashCode() : 0);
-        result = 31 * result + (birthdate != null ? birthdate.hashCode() : 0);
+        result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
