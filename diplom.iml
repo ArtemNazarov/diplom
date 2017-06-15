@@ -30,5 +30,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="org.hibernate:hibernate-core:5.2.10.Final" level="project" />
     <orderEntry type="library" name="org.controlsfx:controlsfx:8.40.12" level="project" />
+    <orderEntry type="library" name="org.postgresql:postgresql:42.1.1" level="project" />
   </component>
 </module>

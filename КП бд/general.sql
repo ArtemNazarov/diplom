@@ -1,4 +1,4 @@
-﻿CREATE TABLE users(
+CREATE TABLE users(
   user_login varchar(150) NOT NULL,
   user_password varchar(150) NOT NULL,
   user_role varchar(150) NOT NULL,

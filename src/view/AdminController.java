@@ -20,6 +20,7 @@ import org.hibernate.query.Query;
 import sessionFactory.HibernateSessionFactory;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -581,23 +582,19 @@ public class AdminController implements Initializable {
     }
 
     public void changeEmployee(ActionEvent actionEvent) {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        EmployeesEntity.class.getDeclaredFields();
-        Query query = session.createQuery("update EmployeesEntity SET snp= :snpParam, city = :city, address = :address, phone = :phone, birthdate= :birthDate, seat = :seat, department = :dep, institution = :inst WHERE id = :id");
-        query.setParameter("id", Integer.parseInt(idEmployeeField.getText()));
-        query.setParameter("snpParam", snpEmployeeField.getText());
-        query.setParameter("birthDate", birthDateEmployeeField.getValue());
-        query.setParameter("city", cityEmployeeField.getText());
-        query.setParameter("address", addressEmplField.getText());
-        query.setParameter("phone", phoneEmployeeField.getText());
-        query.setParameter("inst", Integer.parseInt(institutionField.getText()));
-        query.setParameter("dep", Integer.parseInt(departmentEmployeeField.getText()));
-        query.setParameter("seat", Integer.parseInt(seatEmployeeField.getText()));
-        query.executeUpdate();
-        selectSeats(session);
-        tx.commit();
-        session.close();
+        Object[] parameters = {
+                Integer.parseInt(idEmployeeField.getText()),
+                snpEmployeeField.getText(),
+                birthDateEmployeeField.getValue(),
+                cityEmployeeField.getText(),
+                addressEmplField.getText(),
+                phoneEmployeeField.getText(),
+                Integer.parseInt(institutionField.getText()),
+                Integer.parseInt(departmentEmployeeField.getText()),
+                Integer.parseInt(seatEmployeeField.getText())
+        };
+        HQLQueryGenerator<EmployeesEntity> generator = new HQLQueryGenerator<>(EmployeesEntity.class);
+        generator.generateUpdateQuery(employeesList, EmployeesEntity.class.getDeclaredFields(), parameters);
     }
 
     public void getEmployees(ActionEvent actionEvent) {
