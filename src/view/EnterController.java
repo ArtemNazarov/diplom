@@ -1,5 +1,6 @@
 package view;
 
+import db.HQLQueryGenerator;
 import db.UsersEntity;
 import dialogs.DialogManager;
 import javafx.event.ActionEvent;
@@ -106,6 +107,8 @@ public class EnterController implements Initializable {
     }
 
     public List<UsersEntity> selectUser() {
+        HQLQueryGenerator<UsersEntity> generator = new HQLQueryGenerator<>(UsersEntity.class);
+        generator.selectQuery();
         List<UsersEntity> usersList = null;
         try {
             Session session = HibernateSessionFactory.getSessionFactory().openSession();
