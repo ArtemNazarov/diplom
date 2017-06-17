@@ -20,13 +20,14 @@ import org.hibernate.query.Query;
 import sessionFactory.HibernateSessionFactory;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
@@ -55,12 +56,12 @@ public class AdminController implements Initializable {
 
 
     public TableView<EmployeesEntity> employeesTable;
-    public TableColumn<EmployeesEntity, Integer> idEmployee;
-    public TableColumn<EmployeesEntity, String> snpEmployee;
-    public TableColumn<EmployeesEntity, String> birthDateEmployee;
-    public TableColumn<EmployeesEntity, String> cityEmployee;
-    public TableColumn<EmployeesEntity, String> addressEmployee;
-    public TableColumn<EmployeesEntity, String> phoneEmployee;
+    public TableColumn<EmployeesEntity, Integer> idEmployeeCol;
+    public TableColumn<EmployeesEntity, String> snpEmployeeCol;
+    public TableColumn<EmployeesEntity, String> birthDateEmployeeCol;
+    public TableColumn<EmployeesEntity, String> cityEmployeeCol;
+    public TableColumn<EmployeesEntity, String> addressEmployeeCol;
+    public TableColumn<EmployeesEntity, String> phoneEmployeeCol;
     public TableColumn<EmployeesEntity, Integer> seatEmployeeCol;
     public TableColumn<EmployeesEntity, Integer> departmentEmployeeCol;
     public TableColumn<EmployeesEntity, String> loginEmployeeCol;
@@ -78,7 +79,6 @@ public class AdminController implements Initializable {
     public TextField amountOrderField;
     public TextField orderStateField;
     public DatePicker dateExecField;
-
 
     public TableView<OrdersEntity> ordersTable;
     public TableColumn<OrdersEntity, Integer> idOrderCol;
@@ -180,36 +180,48 @@ public class AdminController implements Initializable {
     }
 
     public void initializeSupplierCols() {
-        idSupplierCol.setCellValueFactory(celldata -> celldata.getValue().idProperty().asObject());
-        ogrnSupplierCol.setCellValueFactory(celldata -> celldata.getValue().ogrnProperty());
-        innSupplierCol.setCellValueFactory(celldata -> celldata.getValue().innProperty());
-        firmTitleFieldSupplierCol.setCellValueFactory(celldata -> celldata.getValue().firmtitleProperty());
-        contractValidityCol.setCellValueFactory(celldata -> celldata.getValue().contractValidityProperty().asObject());
-        contractDateCol.setCellValueFactory(param -> {
-            SimpleStringProperty property = new SimpleStringProperty();
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            property.setValue(dateFormat.format(param.getValue().getContractSignDate()));
-            return property;
-        });
+        Map<String,TableColumn> colsMap = new HashMap<>();
+        colsMap.put("id", idSupplierCol);
+        colsMap.put("ogrn", ogrnSupplierCol);
+        colsMap.put("inn", innSupplierCol);
+        colsMap.put("firmTitle", firmTitleFieldSupplierCol);
+        colsMap.put("contractValidity", contractValidityCol);
+        colsMap.put("contractDate", contractDateCol);
+        UICreator<SuppliersEntity> uiCreator = new UICreator<>(SuppliersEntity.class);
+        colsMap = uiCreator.initializeSupplierCols(colsMap);
+        idSupplierCol = colsMap.get("id");
+        ogrnSupplierCol = colsMap.get("ogrn");
+        innSupplierCol = colsMap.get("inn");
+        firmTitleFieldSupplierCol = colsMap.get("firmTitle");
+        contractValidityCol = colsMap.get("contractValidity");
+        contractDateCol = colsMap.get("contractDate");
         suppliersTable.setItems(suppliersList);
     }
 
     public void initializeEmployeeCols() {
-        idEmployee.setCellValueFactory(celldata -> celldata.getValue().idProperty().asObject());
-        snpEmployee.setCellValueFactory(celldata -> celldata.getValue().snpProperty());
-        birthDateEmployee.setCellValueFactory(param -> {
-            SimpleStringProperty property = new SimpleStringProperty();
-            property.setValue(param.getValue().getBirthDate().toString());
-            return property;
-        });
-        cityEmployee.setCellValueFactory(celldata -> celldata.getValue().cityProperty());
-        addressEmployee.setCellValueFactory(celldata -> celldata.getValue().addressProperty());
-        phoneEmployee.setCellValueFactory(celldata -> celldata.getValue().phoneProperty());
-        seatEmployeeCol.setCellValueFactory(celldata -> celldata.getValue().seatProperty().asObject());
-        departmentEmployeeCol.setCellValueFactory(celldata -> celldata.getValue().departmentProperty().asObject());
-        institutionEmployeeCol.setCellValueFactory(celldata -> celldata.getValue().institutionProperty().asObject());
-        loginEmployeeCol.setCellValueFactory(celldata -> celldata.getValue().loginProperty());
-        employeesTable.setItems(employeesList);
+        Map<String,TableColumn> colsMap = new HashMap<>();
+        colsMap.put("id", idEmployeeCol);
+        colsMap.put("snp", snpEmployeeCol);
+        colsMap.put("birthDate", birthDateEmployeeCol);
+        colsMap.put("city", cityEmployeeCol);
+        colsMap.put("address", addressEmployeeCol);
+        colsMap.put("phone", phoneEmployeeCol);
+        colsMap.put("seat",seatEmployeeCol);
+        colsMap.put("department",departmentEmployeeCol);
+        colsMap.put("institution",institutionEmployeeCol);
+        colsMap.put("login",loginEmployeeCol);
+        UICreator<SuppliersEntity> uiCreator = new UICreator<>(SuppliersEntity.class);
+        colsMap = uiCreator.initializeEmployeeCols(colsMap);
+        idEmployeeCol = colsMap.get("id");
+        snpEmployeeCol = colsMap.get("snp");
+        birthDateEmployeeCol = colsMap.get("birthDate");
+        cityEmployeeCol = colsMap.get("city");
+        addressEmployeeCol = colsMap.get("address");
+        phoneEmployeeCol = colsMap.get("phone");
+        seatEmployeeCol = colsMap.get("seat");
+        departmentEmployeeCol = colsMap.get("department");
+        institutionEmployeeCol = colsMap.get("institution");
+        loginEmployeeCol = colsMap.get("login");
     }
 
     public void initializeOrderCols() {
@@ -296,8 +308,6 @@ public class AdminController implements Initializable {
                 cityEmployeeField.setText(newValue.getCity());
                 addressEmplField.setText(newValue.getAddress());
                 phoneEmployeeField.setText(newValue.getPhone());
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//                LocalDate localDate = LocalDate.parse(newValue.getBirthDate().toString(), formatter);
                 birthDateEmployeeField.setValue(newValue.getBirthDate());
                 seatEmployeeField.setText(newValue.seatProperty().getValue().toString());
                 departmentEmployeeField.setText(newValue.departmentProperty().getValue().toString());
@@ -368,7 +378,6 @@ public class AdminController implements Initializable {
                 roleField.setText(newValue.getUserRole().getRole());
             }
         });
-
     }
 
     @Override
@@ -406,7 +415,6 @@ public class AdminController implements Initializable {
                     updateSeat();
                 } else {
                     DialogManager.showErrorDialog("Введите зарплату");
-
                 }
             } else {
                 DialogManager.showErrorDialog("Введите должность");

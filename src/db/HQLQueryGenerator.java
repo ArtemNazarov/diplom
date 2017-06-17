@@ -5,7 +5,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import sessionFactory.HibernateSessionFactory;
 
-import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Field;
 import java.util.List;
 
 public class HQLQueryGenerator<T> {
@@ -29,11 +29,27 @@ public class HQLQueryGenerator<T> {
         session.close();
     }
 
+    public List<T> generateSelectQuery() {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        List<T> elements = selectQuery(session);
+        tx.commit();
+        session.close();
+        return elements;
+    }
+
     public void selectQuery(Session session, List<T> tableList) {
         Query query = session.createQuery("from " + getMyType().getSimpleName());
         List<T> elements = query.list();
         tableList.clear();
         tableList.addAll(elements);
+    }
+
+    public List<T> selectQuery(Session session) {
+        //TODO Напиши по аналогии с update для WHERE
+        Query query = session.createQuery("from " + getMyType().getSimpleName());
+        List<T> elements = query.list();
+        return elements;
     }
 
     public void generateDeleteQuery(List<T> tableList, int id) {
@@ -66,7 +82,7 @@ public class HQLQueryGenerator<T> {
 //        tableList.addAll(elements);
 //    }
 
-    public void generateUpdateQuery(List<T> tableList, Object[] fields, Object[] parameters) {
+    public void generateUpdateQuery(List<T> tableList, Field[] fields, Object[] parameters) {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         updateQuery(session, fields, parameters);
@@ -75,18 +91,20 @@ public class HQLQueryGenerator<T> {
         session.close();
     }
 
-    public void updateQuery(Session session, Object[] fields, Object[] parameters) {
+    public void updateQuery(Session session, Field[] fields, Object[] parameters) {
         String q = "update " + getMyType().getSimpleName() + " SET ";
+
         for (int i = 0; i < fields.length - 1; i++) {
-            q += fields[i + 1] + "= :param" + i;
+            q += fields[i + 1].getName() + "= :param" + i;
             if (i != fields.length - 2)
                 q += ',';
         }
-        q += "WHERE " + fields[0] + " = :id";
+        q += " WHERE " + fields[0].getName() + " = :id";
         Query query = session.createQuery(q);
         for (int i = 0; i < fields.length; i++) {
             query.setParameter(fields[i].toString(), parameters[i]);
         }
+        query.executeUpdate();
     }
 
 //    public void changeEmployee(ActionEvent actionEvent) {
