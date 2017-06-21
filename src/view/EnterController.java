@@ -1,6 +1,5 @@
 package view;
 
-import db.HQLQueryGenerator;
 import db.UsersEntity;
 import dialogs.DialogManager;
 import javafx.event.ActionEvent;
@@ -85,8 +84,6 @@ public class EnterController implements Initializable {
     }
 
     public List<UsersEntity> selectUserLoginPassword() {
-        HQLQueryGenerator<UsersEntity> generator = new HQLQueryGenerator<>(UsersEntity.class);
-
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("FROM UsersEntity WHERE userLogin = :log_param AND userPassword = :pass_param");
@@ -109,8 +106,6 @@ public class EnterController implements Initializable {
     }
 
     public List<UsersEntity> selectUser() {
-        HQLQueryGenerator<UsersEntity> generator = new HQLQueryGenerator<>(UsersEntity.class);
-        generator.generateSelectQuery();
         List<UsersEntity> usersList = null;
         try {
             Session session = HibernateSessionFactory.getSessionFactory().openSession();
@@ -123,7 +118,6 @@ public class EnterController implements Initializable {
         } catch (ExceptionInInitializerError e) {
             e.printStackTrace();
         }
-
         return usersList;
     }
 

@@ -3,6 +3,7 @@ package db;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.hibernate.SessionFactory;
 import sessionFactory.HibernateSessionFactory;
 
 import java.lang.reflect.Field;
@@ -61,26 +62,12 @@ public class HQLQueryGenerator<T> {
         session.close();
     }
 
-    public void deleteQuery(Session session, int id) {
-        Query query = session.createQuery("delete from " + getMyType().getSimpleName() + " where id = :id");
-        query.setParameter("id", id);
+    public void deleteQuery(Session session, int getid) {
+        Query query = session.createQuery("delete from " + getMyType().getSimpleName() + " where id = :gid");
+        query.setParameter("gid", getid);
+        query.executeUpdate();
     }
 
-//    public void generateDeleteQuery(List<T> tableList, Object... fields) {
-//        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-//        Transaction tx = session.beginTransaction();
-//        deleteQuery(session, tableList, fields);
-//        tx.commit();
-//        session.close();
-//    }
-//
-//    public void deleteQuery(Session session, List<T> tableList, Object[] fields) {
-//        Query query = session.createQuery("delete from " + getMyType().getSimpleName() + " where " + " fields[i] = :id");
-//        query.setParameter("id",id);
-//        List<T> elements = query.list();
-//        tableList.clear();
-//        tableList.addAll(elements);
-//    }
 
     public void generateUpdateQuery(List<T> tableList, Field[] fields, Object[] parameters) {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();

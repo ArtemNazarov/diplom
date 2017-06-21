@@ -1,6 +1,5 @@
 package view;
 
-import db.UsersEntity;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,7 +14,6 @@ import org.hibernate.query.Query;
 import sessionFactory.HibernateSessionFactory;
 
 import java.io.IOException;
-import java.util.List;
 
 public class RegisterController {
 

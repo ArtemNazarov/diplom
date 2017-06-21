@@ -10,7 +10,6 @@ public class UsersEntity {
     private SimpleStringProperty userLogin = new SimpleStringProperty();
     private SimpleStringProperty userPassword = new SimpleStringProperty();
     private UserRole userRole;
-    
 
 
     @Id
@@ -33,7 +32,7 @@ public class UsersEntity {
         this.userPassword.set(userPassword);
     }
 
-    @Convert (converter = UsersEntity.RoleConverter.class)
+    @Convert(converter = UsersEntity.RoleConverter.class)
     @Column(name = "user_role", nullable = false, updatable = false)
     public UserRole getUserRole() {
         return userRole;
@@ -66,7 +65,7 @@ public class UsersEntity {
     }
 
     @Converter
-    public static class RoleConverter implements AttributeConverter<UserRole, String>{
+    public static class RoleConverter implements AttributeConverter<UserRole, String> {
 
         @Override
         public String convertToDatabaseColumn(UserRole userRole) {

@@ -5,22 +5,25 @@ import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 
+/**
+ * Created by Артем on 19.06.2017.
+ */
 @Entity
-@Table(name = "toy_types", schema = "public", catalog = "toy_factory")
-public class ToyTypesEntity {
+@Table(name = "banks", schema = "public", catalog = "toy_factory")
+public class BanksEntity {
     private SimpleIntegerProperty id = new SimpleIntegerProperty();
-    private SimpleStringProperty toyType = new SimpleStringProperty();
+    private SimpleStringProperty bank = new SimpleStringProperty();
 
     public SimpleIntegerProperty idProperty() {
         return id;
     }
 
-    public SimpleStringProperty toyTypeProperty() {
-        return toyType;
+    public SimpleStringProperty bankProperty() {
+        return bank;
     }
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public int getId() {
         return id.get();
     }
@@ -30,13 +33,13 @@ public class ToyTypesEntity {
     }
 
     @Basic
-    @Column(name = "toy_type", nullable = false, length = 150)
-    public String getToyType() {
-        return toyType.get();
+    @Column(name = "bank")
+    public String getBank() {
+        return bank.get();
     }
 
-    public void setToyType(String toyType) {
-        this.toyType.set(toyType);
+    public void setBank(String bank) {
+        this.bank.set(bank);
     }
 
     @Override
@@ -44,10 +47,10 @@ public class ToyTypesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ToyTypesEntity that = (ToyTypesEntity) o;
+        BanksEntity that = (BanksEntity) o;
 
         if (id != that.id) return false;
-        if (toyType != null ? !toyType.equals(that.toyType) : that.toyType != null) return false;
+        if (bank != null ? !bank.equals(that.bank) : that.bank != null) return false;
 
         return true;
     }
@@ -55,7 +58,7 @@ public class ToyTypesEntity {
     @Override
     public int hashCode() {
         int result = id.get();
-        result = 31 * result + (toyType != null ? toyType.hashCode() : 0);
+        result = 31 * result + (bank != null ? bank.hashCode() : 0);
         return result;
     }
 }

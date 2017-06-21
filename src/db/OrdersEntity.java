@@ -4,7 +4,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.sql.Date;
 
 @Entity
@@ -16,7 +15,7 @@ public class OrdersEntity {
     private SimpleStringProperty currency = new SimpleStringProperty();
     private SimpleIntegerProperty productAmount = new SimpleIntegerProperty();
     private SimpleStringProperty orderState = new SimpleStringProperty();
-    private LocalDate executionDate;
+    private Date executionDate;
     private SimpleIntegerProperty customer = new SimpleIntegerProperty();
 
     @Id
@@ -79,13 +78,12 @@ public class OrdersEntity {
         this.orderState.set(orderState);
     }
 
-    @Convert (converter = OrdersEntity.DateConverter.class)
     @Column(name = "execution_date", nullable = true)
-    public LocalDate getExecutionDate() {
+    public Date getExecutionDate() {
         return executionDate;
     }
 
-    public void setExecutionDate(LocalDate executionDate) {
+    public void setExecutionDate(Date executionDate) {
         this.executionDate = executionDate;
     }
 
@@ -155,24 +153,9 @@ public class OrdersEntity {
         return result;
     }
 
-    @Converter
-    public static class DateConverter implements AttributeConverter<LocalDate, Date>{
-        @Override
-        public Date convertToDatabaseColumn(LocalDate locDate) {
-            return (locDate == null ? null : Date.valueOf(locDate));
-        }
-
-        @Override
-        public LocalDate convertToEntityAttribute(Date sqlDate) {
-            return (sqlDate == null ? null : sqlDate.toLocalDate());
-        }
-    }
 
     public SimpleIntegerProperty customerProperty() {
         return customer;
     }
 
-    public LocalDate execLocalGet(){
-        return this.executionDate;
-    }
 }

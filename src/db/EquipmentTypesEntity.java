@@ -1,31 +1,42 @@
 package db;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "equipment_types", schema = "public", catalog = "toy_factory")
 public class EquipmentTypesEntity {
-    private int id;
-    private String equipmentType;
+    private SimpleIntegerProperty id = new SimpleIntegerProperty();
+    private SimpleStringProperty equipmentType = new SimpleStringProperty();
+
+    public SimpleIntegerProperty idProperty() {
+        return id;
+    }
+
+    public SimpleStringProperty equipmentTypeProperty() {
+        return equipmentType;
+    }
 
     @Id
     @Column(name = "id", nullable = false)
     public int getId() {
-        return id;
+        return id.get();
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id.set(id);
     }
 
     @Basic
     @Column(name = "equipment_type", nullable = false, length = 150)
     public String getEquipmentType() {
-        return equipmentType;
+        return equipmentType.get();
     }
 
     public void setEquipmentType(String equipmentType) {
-        this.equipmentType = equipmentType;
+        this.equipmentType.set(equipmentType);
     }
 
     @Override
@@ -44,7 +55,7 @@ public class EquipmentTypesEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id.get();
         result = 31 * result + (equipmentType != null ? equipmentType.hashCode() : 0);
         return result;
     }

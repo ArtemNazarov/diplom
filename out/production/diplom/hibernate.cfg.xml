@@ -7,7 +7,7 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="connection.url">jdbc:postgresql://localhost:5432/toy_factory</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.username">artem_su</property>
+        <!--<property name="connection.username">artem_su</property>-->
         <property name="connection.password">artem_su</property>
 
         <!-- NOTE that after automapping with IDEA property username and password will delete -->
@@ -19,8 +19,6 @@
         <mapping class="db.EquipmentTypesEntity"/>
         <mapping class="db.MaterialsEntity"/>
         <mapping class="db.OrdersEntity"/>
-        <mapping class="db.PackageFabricateEntity"/>
-        <mapping class="db.PackagesEntity"/>
         <mapping class="db.SeatsEntity"/>
         <mapping class="db.SuppliersEntity"/>
         <mapping class="db.ToyProduceEntity"/>
@@ -28,6 +26,11 @@
         <mapping class="db.ToysEntity"/>
         <mapping class="db.UsersEntity"/>
         <mapping class="db.ProcurementsEntity"/>
+        <mapping class="db.AccountsEntity"/>
+        <mapping class="db.BanksEntity"/>
+        <mapping class="db.PaymentsEntity"/>
+        <mapping class="db.ProjectsEntity"/>
+        <mapping class="db.ToysEntity"/>
         <!-- NOTE that after automapping with IDEA property username and password will delete -->
 
         <!-- DB schema will be updated if needed -->

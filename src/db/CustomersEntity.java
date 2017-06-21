@@ -1,5 +1,6 @@
 package db;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "customers", schema = "public", catalog = "toy_factory")
 public class CustomersEntity {
-    private int id;
+    private SimpleIntegerProperty id = new SimpleIntegerProperty();
     private SimpleStringProperty snp = new SimpleStringProperty();
     private SimpleStringProperty ogrn= new SimpleStringProperty();
     private SimpleStringProperty inn= new SimpleStringProperty();
@@ -20,11 +21,11 @@ public class CustomersEntity {
     @Id
     @Column(name = "id", nullable = false)
     public int getId() {
-        return id;
+        return id.get();
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id.set(id);
     }
 
     @Basic
@@ -129,7 +130,7 @@ public class CustomersEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id.get();
         result = 31 * result + (snp != null ? snp.hashCode() : 0);
         result = 31 * result + (ogrn != null ? ogrn.hashCode() : 0);
         result = 31 * result + (inn != null ? inn.hashCode() : 0);
@@ -171,5 +172,9 @@ public class CustomersEntity {
 
     public SimpleStringProperty loginProperty() {
         return login;
+    }
+
+    public SimpleIntegerProperty idProperty() {
+        return id;
     }
 }

@@ -19,8 +19,6 @@
         <mapping class="db.EquipmentTypesEntity"/>
         <mapping class="db.MaterialsEntity"/>
         <mapping class="db.OrdersEntity"/>
-        <mapping class="db.PackageFabricateEntity"/>
-        <mapping class="db.PackagesEntity"/>
         <mapping class="db.SeatsEntity"/>
         <mapping class="db.SuppliersEntity"/>
         <mapping class="db.ToyProduceEntity"/>
@@ -28,6 +26,11 @@
         <mapping class="db.ToysEntity"/>
         <mapping class="db.UsersEntity"/>
         <mapping class="db.ProcurementsEntity"/>
+        <mapping class="db.AccountsEntity"/>
+        <mapping class="db.BanksEntity"/>
+        <mapping class="db.PaymentsEntity"/>
+        <mapping class="db.ProjectsEntity"/>
+        <mapping class="db.ToysEntity"/>
         <!-- NOTE that after automapping with IDEA property username and password will delete -->
 
         <!-- DB schema will be updated if needed -->

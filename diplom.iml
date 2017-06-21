@@ -14,7 +14,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="hibernate.cfg.xml" value="112f02aa-374e-43ce-8dca-3433a535b601" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
@@ -28,10 +28,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="org.hibernate:hibernate-core:5.2.10.Final" level="project" />
     <orderEntry type="library" name="org.controlsfx:controlsfx:8.40.12" level="project" />
     <orderEntry type="library" name="org.postgresql:postgresql:42.1.1" level="project" />
     <orderEntry type="library" name="org.postgresql:postgresql:42.1.0" level="project" />
     <orderEntry type="library" name="org.controlsfx:controlsfx-samples:8.40.12" level="project" />
+    <orderEntry type="library" name="org.hibernate:hibernate-core:5.2.0.Final" level="project" />
   </component>
 </module>
